@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiProject1.MainPage"
+             BackgroundColor="#F2F5F9">
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryGradientStart">#5B67F2</Color>
+        <Color x:Key="PrimaryGradientEnd">#8F53F3</Color>
+        <Color x:Key="CardDarkBg">#4A5060</Color>
+        <Color x:Key="TextWhite">#FFFFFF</Color>
+        <Color x:Key="TextGray">#D0D0D0</Color>
+        <Color x:Key="AccentCyan">#00E5FF</Color>
+
+        <Style x:Key="DeviceCardStyle" TargetType="Border">
+            <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="HeightRequest" Value="130" />
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="0,0,0,30">
+
+            <Border StrokeThickness="0"
+                    HorizontalOptions="Fill"
+                    HeightRequest="240"
+                    Padding="25,40,25,25">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="{StaticResource PrimaryGradientStart}" Offset="0.0" />
+                        <GradientStop Color="{StaticResource PrimaryGradientEnd}" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="0,0,30,30"/>
+                </Border.StrokeShape>
+
+                <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                        <Label Text="Good Evening!" 
+                               TextColor="{StaticResource TextWhite}" 
+                               FontSize="26" 
+                               FontAttributes="Bold"/>
+                        <Label Text="Your home is secure" 
+                               TextColor="#E0E0E0" 
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
+                        <Label Text="24°C" 
+                               TextColor="{StaticResource TextWhite}" 
+                               FontSize="30" 
+                               FontAttributes="Bold"/>
+                        <Label Text="Perfect" 
+                               TextColor="#E0E0E0" 
+                               FontSize="12" 
+                               HorizontalOptions="End"/>
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="20">
+                        <Label Text="🛡️ Secure" TextColor="White" VerticalOptions="Center"/>
+                        <Label Text="⚡ 89% Efficient" TextColor="White" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*,*" Padding="25,0" ColumnSpacing="10">
+                <Button Text="Compact" 
+                        BackgroundColor="White" 
+                        TextColor="{StaticResource PrimaryGradientStart}" 
+                        FontAttributes="Bold" 
+                        CornerRadius="20"
+                        Shadow="{Shadow Brush=Gray, Radius=5, Opacity=0.1}"/>
+                <Button Text="Smart" BackgroundColor="Transparent" TextColor="Gray" FontAttributes="Bold"/>
+                <Button Text="Premium" BackgroundColor="Transparent" TextColor="Gray" FontAttributes="Bold"/>
+            </Grid>
+
+            <Label Text="Compact Control" 
+                   Padding="25,0" 
+                   TextColor="#333" 
+                   FontSize="18" 
+                   FontAttributes="Bold"/>
+
+            <Grid RowDefinitions="Auto, Auto" 
+                  ColumnDefinitions="*, *" 
+                  Padding="25,0" 
+                  RowSpacing="15" 
+                  ColumnSpacing="15">
+
+                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label Text="💡" FontSize="28" VerticalOptions="Start"/>
+                        <Switch IsToggled="True" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
+                        <Label Grid.Row="1" Text="Living Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Pendant Lights" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label Text="❄️" FontSize="28" VerticalOptions="Start"/>
+                        <Switch IsToggled="False" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
+                        <Label Grid.Row="1" Text="Bedroom" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Split AC" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label Text="📺" FontSize="28" VerticalOptions="Start"/>
+                        <Switch IsToggled="True" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
+                        <Label Grid.Row="1" Text="Living Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Smart TV" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label Text="🌀" FontSize="28" VerticalOptions="Start"/>
+                        <Switch IsToggled="False" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
+                        <Label Grid.Row="1" Text="Study Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Table Fan" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Border Margin="25,0" 
+                    Padding="20" 
+                    BackgroundColor="White" 
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="0">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Today's Energy Usage" FontAttributes="Bold" TextColor="#333"/>
+                        <Label Text="45%" TextColor="{StaticResource PrimaryGradientEnd}" FontAttributes="Bold"/>
+                    </Grid>
+
+                    <ProgressBar Progress="0.45" 
+                                 ProgressColor="{StaticResource PrimaryGradientStart}" 
+                                 ScaleY="2"
+                                 BackgroundColor="#F0F0F0"/>
+
+                    <Label Text="12.5 kWh used today" FontSize="12" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
