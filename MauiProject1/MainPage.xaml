@@ -89,7 +89,8 @@
                   RowSpacing="15" 
                   ColumnSpacing="15">
 
-                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                <!-- Smart Light Card -->
+                <Border x:Name="LightCard" Grid.Row="0" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#4A5060" Offset="0.0" />
@@ -97,14 +98,18 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid RowDefinitions="*, Auto, Auto">
-                        <Label Text="💡" FontSize="28" VerticalOptions="Start"/>
-                        <Switch IsToggled="True" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
-                        <Label Grid.Row="1" Text="Living Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
-                        <Label Grid.Row="2" Text="Pendant Lights" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                        <Label x:Name="LightIcon" Text="💡" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="LightStatusLabel" Text="ON" TextColor="#FFA500" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="LightSwitch" IsToggled="True" Toggled="OnLightToggled" OnColor="#FFA500" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Smart Light" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Living Room" TextColor="{StaticResource TextGray}" FontSize="12"/>
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                <!-- Air Conditioner Card -->
+                <Border x:Name="AirCondCard" Grid.Row="0" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#4A5060" Offset="0.0" />
@@ -112,14 +117,18 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid RowDefinitions="*, Auto, Auto">
-                        <Label Text="❄️" FontSize="28" VerticalOptions="Start"/>
-                        <Switch IsToggled="False" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
-                        <Label Grid.Row="1" Text="Bedroom" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
-                        <Label Grid.Row="2" Text="Split AC" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                        <Label x:Name="AirCondIcon" Text="❄️" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="AirCondStatusLabel" Text="18°C" TextColor="#00E5FF" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="AirCondSwitch" IsToggled="True" Toggled="OnAirCondToggled" OnColor="#00E5FF" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Air Cond" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Bedroom" TextColor="{StaticResource TextGray}" FontSize="12"/>
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                <!-- Ceiling Fan Card -->
+                <Border x:Name="FanCard" Grid.Row="1" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#4A5060" Offset="0.0" />
@@ -127,14 +136,18 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid RowDefinitions="*, Auto, Auto">
-                        <Label Text="📺" FontSize="28" VerticalOptions="Start"/>
-                        <Switch IsToggled="True" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
-                        <Label Grid.Row="1" Text="Living Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
-                        <Label Grid.Row="2" Text="Smart TV" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                        <Label x:Name="FanIcon" Text="🌀" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="FanStatusLabel" Text="OFF" TextColor="#808080" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="FanSwitch" IsToggled="False" Toggled="OnFanToggled" OnColor="#00E5FF" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Ceiling Fan" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Study Room" TextColor="{StaticResource TextGray}" FontSize="12"/>
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                <!-- Security Card -->
+                <Border x:Name="SecurityCard" Grid.Row="1" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#4A5060" Offset="0.0" />
@@ -142,10 +155,13 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid RowDefinitions="*, Auto, Auto">
-                        <Label Text="🌀" FontSize="28" VerticalOptions="Start"/>
-                        <Switch IsToggled="False" HorizontalOptions="End" OnColor="{StaticResource AccentCyan}"/>
-                        <Label Grid.Row="1" Text="Study Room" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
-                        <Label Grid.Row="2" Text="Table Fan" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                        <Label x:Name="SecurityIcon" Text="🛡️" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="SecurityStatusLabel" Text="Armed" TextColor="#9B59B6" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="SecuritySwitch" IsToggled="True" Toggled="OnSecurityToggled" OnColor="#9B59B6" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Security" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Home Security" TextColor="{StaticResource TextGray}" FontSize="12"/>
                     </Grid>
                 </Border>
             </Grid>
