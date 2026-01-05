@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProject1.MainPage"
+
              BackgroundColor="{AppThemeBinding Light=#F2F5F8, Dark=#000000}">
 
     <ScrollView>
@@ -17,34 +18,72 @@
                            FontSize="14"/>
                 </VerticalStackLayout>
 
-                <Label x:Name="ThemeIcon"
-                       Grid.Column="1" 
-                       Text="🌙" 
-                       FontSize="20"
-                       VerticalOptions="Center"
-                       TextColor="{AppThemeBinding Light=Black, Dark=White}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnThemeSwitchTapped"/>
-                    </Label.GestureRecognizers>
-                </Label>
+             BackgroundColor="#F2F5F9">
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryGradientStart">#5B67F2</Color>
+        <Color x:Key="PrimaryGradientEnd">#8F53F3</Color>
+        <Color x:Key="CardDarkBg">#4A5060</Color>
+        <Color x:Key="TextWhite">#FFFFFF</Color>
+        <Color x:Key="TextGray">#D0D0D0</Color>
+        <Color x:Key="AccentCyan">#00E5FF</Color>
 
-                <Label Grid.Column="2" Text="⚙️" FontSize="20" VerticalOptions="Center"
-                       TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-            </Grid>
+        <Style x:Key="DeviceCardStyle" TargetType="Border">
+            <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="Padding" Value="15" />
+            <Setter Property="HeightRequest" Value="130" />
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+    </ContentPage.Resources>
+main
 
-            <Border StrokeShape="RoundRectangle 25" StrokeThickness="0" Padding="20"
-                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
-                <Grid ColumnDefinitions="*, Auto">
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="28°C" FontSize="45" FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light=#333, Dark=White}"/>
-                        <Label Text="Partly Cloudy" TextColor="Gray" FontAttributes="Bold"/>
-                        <Label Text="H: 32° L: 24°" TextColor="Gray" FontSize="12"/>
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="0,0,0,30">
+
+            <Border StrokeThickness="0"
+                    HorizontalOptions="Fill"
+                    HeightRequest="240"
+                    Padding="25,40,25,25">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="{StaticResource PrimaryGradientStart}" Offset="0.0" />
+                        <GradientStop Color="{StaticResource PrimaryGradientEnd}" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="0,0,30,30"/>
+                </Border.StrokeShape>
+
+                <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                        <Label Text="Good Evening!" 
+                               TextColor="{StaticResource TextWhite}" 
+                               FontSize="26" 
+                               FontAttributes="Bold"/>
+                        <Label Text="Your home is secure" 
+                               TextColor="#E0E0E0" 
+                               FontSize="14"/>
                     </VerticalStackLayout>
-                    <Label Grid.Column="1" Text="⛅" FontSize="50" VerticalOptions="Center"/>
+
+                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
+                        <Label Text="24°C" 
+                               TextColor="{StaticResource TextWhite}" 
+                               FontSize="30" 
+                               FontAttributes="Bold"/>
+                        <Label Text="Perfect" 
+                               TextColor="#E0E0E0" 
+                               FontSize="12" 
+                               HorizontalOptions="End"/>
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="20">
+                        <Label Text="🛡️ Secure" TextColor="White" VerticalOptions="Center"/>
+                        <Label Text="⚡ 89% Efficient" TextColor="White" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
                 </Grid>
             </Border>
 
+ lethuong
             <Grid RowDefinitions="160, 160" ColumnDefinitions="*, *" RowSpacing="15" ColumnSpacing="15">
 
                 <Border x:Name="LightCard" Grid.Row="0" Grid.Column="0" StrokeShape="RoundRectangle 25" StrokeThickness="0" Padding="15"
@@ -113,30 +152,131 @@
                         <Label Grid.Row="2" Text="Security" FontAttributes="Bold"
                                TextColor="{AppThemeBinding Light=#333, Dark=White}"/>
                         <Label x:Name="SecurityStatusLabel" Grid.Row="3" Text="Armed" TextColor="#E91E63" FontSize="13" FontAttributes="Bold"/>
+            <Grid ColumnDefinitions="*,*,*" Padding="25,0" ColumnSpacing="10">
+                <Button Text="Compact" 
+                        BackgroundColor="White" 
+                        TextColor="{StaticResource PrimaryGradientStart}" 
+                        FontAttributes="Bold" 
+                        CornerRadius="20"
+                        Shadow="{Shadow Brush=Gray, Radius=5, Opacity=0.1}"/>
+                <Button Text="Smart" BackgroundColor="Transparent" TextColor="Gray" FontAttributes="Bold"/>
+                <Button Text="Premium" BackgroundColor="Transparent" TextColor="Gray" FontAttributes="Bold"/>
+            </Grid>
+
+            <Label Text="Compact Control" 
+                   Padding="25,0" 
+                   TextColor="#333" 
+                   FontSize="18" 
+                   FontAttributes="Bold"/>
+
+            <Grid RowDefinitions="Auto, Auto" 
+                  ColumnDefinitions="*, *" 
+                  Padding="25,0" 
+                  RowSpacing="15" 
+                  ColumnSpacing="15">
+
+                <!-- Smart Light Card -->
+                <Border x:Name="LightCard" Grid.Row="0" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label x:Name="LightIcon" Text="💡" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="LightStatusLabel" Text="ON" TextColor="#FFA500" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="LightSwitch" IsToggled="True" Toggled="OnLightToggled" OnColor="#FFA500" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Smart Light" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Living Room" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <!-- Air Conditioner Card -->
+                <Border x:Name="AirCondCard" Grid.Row="0" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label x:Name="AirCondIcon" Text="❄️" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="AirCondStatusLabel" Text="18°C" TextColor="#00E5FF" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="AirCondSwitch" IsToggled="True" Toggled="OnAirCondToggled" OnColor="#00E5FF" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Air Cond" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Bedroom" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <!-- Ceiling Fan Card -->
+                <Border x:Name="FanCard" Grid.Row="1" Grid.Column="0" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label x:Name="FanIcon" Text="🌀" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="FanStatusLabel" Text="OFF" TextColor="#808080" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="FanSwitch" IsToggled="False" Toggled="OnFanToggled" OnColor="#00E5FF" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Ceiling Fan" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Study Room" TextColor="{StaticResource TextGray}" FontSize="12"/>
+                    </Grid>
+                </Border>
+
+                <!-- Security Card -->
+                <Border x:Name="SecurityCard" Grid.Row="1" Grid.Column="1" Style="{StaticResource DeviceCardStyle}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4A5060" Offset="0.0" />
+                            <GradientStop Color="#3D4250" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid RowDefinitions="*, Auto, Auto">
+                        <Label x:Name="SecurityIcon" Text="🛡️" FontSize="28" VerticalOptions="Start"/>
+                        <HorizontalStackLayout HorizontalOptions="End" Spacing="8">
+                            <Label x:Name="SecurityStatusLabel" Text="Armed" TextColor="#9B59B6" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                            <Switch x:Name="SecuritySwitch" IsToggled="True" Toggled="OnSecurityToggled" OnColor="#9B59B6" ThumbColor="White"/>
+                        </HorizontalStackLayout>
+                        <Label Grid.Row="1" Text="Security" TextColor="{StaticResource TextWhite}" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="Home Security" TextColor="{StaticResource TextGray}" FontSize="12"/>
+ main
                     </Grid>
                 </Border>
             </Grid>
 
-            <Border StrokeShape="RoundRectangle 25" StrokeThickness="0" Padding="20"
-                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+            <Border Margin="25,0" 
+                    Padding="20" 
+                    BackgroundColor="White" 
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="0">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="10" Opacity="0.1"/>
+                </Border.Shadow>
+
+lethuong
+                    <ProgressBar Progress="0.65" ProgressColor="#4CAF50" ScaleY="3" BackgroundColor="{AppThemeBinding Light=#F0F0F0, Dark=#333}"/>
+
                 <VerticalStackLayout Spacing="10">
-                    <Grid ColumnDefinitions="Auto, *, Auto">
-                        <Border BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#2C2C2E}" 
-                                StrokeThickness="0" HeightRequest="45" WidthRequest="45" StrokeShape="RoundRectangle 22.5">
-                            <Label Text="⚡" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#4CAF50" FontSize="20"/>
-                        </Border>
-
-                        <VerticalStackLayout Grid.Column="1" Margin="15,0" VerticalOptions="Center">
-                            <Label Text="Energy Usage" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333, Dark=White}"/>
-                            <Label Text="Today's Consumption" TextColor="Gray" FontSize="12"/>
-                        </VerticalStackLayout>
-
-                        <Label Grid.Column="2" Text="12 kWh" FontAttributes="Bold" FontSize="20" 
-                               VerticalOptions="Center"
-                               TextColor="{AppThemeBinding Light=#333, Dark=White}"/>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Label Text="Today's Energy Usage" FontAttributes="Bold" TextColor="#333"/>
+                        <Label Text="45%" TextColor="{StaticResource PrimaryGradientEnd}" FontAttributes="Bold"/>
                     </Grid>
 
-                    <ProgressBar Progress="0.65" ProgressColor="#4CAF50" ScaleY="3" BackgroundColor="{AppThemeBinding Light=#F0F0F0, Dark=#333}"/>
+                    <ProgressBar Progress="0.45" 
+                                 ProgressColor="{StaticResource PrimaryGradientStart}" 
+                                 ScaleY="2"
+                                 BackgroundColor="#F0F0F0"/>
+
+                    <Label Text="12.5 kWh used today" FontSize="12" TextColor="Gray"/> main
                 </VerticalStackLayout>
             </Border>
 
